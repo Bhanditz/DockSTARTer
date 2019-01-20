@@ -9,6 +9,7 @@ run_dnf() {
         docker-client \
         docker-client-latest \
         docker-common \
+        docker-compose \
         docker-latest \
         docker-latest-logrotate \
         docker-logrotate \
@@ -20,7 +21,8 @@ run_dnf() {
         dnf -y upgrade --refresh > /dev/null 2>&1 || fatal "Failed to upgrade packages from dnf."
     fi
     info "Installing dependencies."
-    dnf -y install curl git grep newt rsync sed > /dev/null 2>&1 || fatal "Failed to install dependencies from dnf."
+    dnf -y install curl git grep newt python-pip rsync sed > /dev/null 2>&1 || fatal "Failed to install dependencies from dnf."
+    dnf -y upgrade python* > /dev/null 2>&1 || fatal "Failed to upgrade python related dependencies from dnf."
     info "Removing unused packages."
     dnf -y autoremove > /dev/null 2>&1 || fatal "Failed to remove unused packages from dnf."
     info "Cleaning up package cache."
