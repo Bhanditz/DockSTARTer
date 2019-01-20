@@ -20,7 +20,7 @@ install_compose() {
         # this seems to be the most supported way to install across all systems
         pip install -U pip > /dev/null 2>&1 || fatal "Failed to install latest pip."
         pip uninstall docker-py > /dev/null 2>&1 || true
-        pip install -U setuptools urllib3[secure] > /dev/null 2>&1 || fatal "Failed to install latest dependencies from pip."
+        pip install -U setuptools "urllib3[secure]" > /dev/null 2>&1 || fatal "Failed to install latest dependencies from pip."
         pip install -U docker-compose || fatal "Failed to install docker-compose from pip."
 
         local UPDATED_COMPOSE
