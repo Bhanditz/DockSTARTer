@@ -14,8 +14,8 @@ install_compose() {
         info "Installing latest docker-compose."
 
         # add if statements (if these exist)
-        rm /usr/local/bin/docker-compose > /dev/null 2>&1 || fatal "Failed to remove /usr/local/bin/docker-compose binary."
-        rm /usr/bin/docker-compose > /dev/null 2>&1 || fatal "Failed to remove /usr/bin/docker-compose binary."
+        rm /usr/local/bin/docker-compose > /dev/null 2>&1 || true
+        rm /usr/bin/docker-compose > /dev/null 2>&1 || true
 
         # this seems to be the most supported way to install across all systems
         pip install -U pip > /dev/null 2>&1 || fatal "Failed to install latest pip."
