@@ -21,7 +21,7 @@ install_compose() {
         pip install -U pip > /dev/null 2>&1 || fatal "Failed to install latest pip."
         pip uninstall docker-py > /dev/null 2>&1 || true
         pip install -U setuptools > /dev/null 2>&1 || fatal "Failed to install latest dependencies from pip."
-        pip install -U docker-compose > /dev/null 2>&1 || fatal "Failed to install docker-compose from pip."
+        pip install -U docker-compose || fatal "Failed to install docker-compose from pip."
 
         local UPDATED_COMPOSE
         UPDATED_COMPOSE=$( (docker-compose --version 2> /dev/null || true) | sed -E 's/.* version ([^,]*)(, build .*)?/\1/')
