@@ -18,7 +18,6 @@ run_apt() {
     fi
     info "Installing dependencies."
     apt-get -y install apt-transport-https curl git grep python-pip rsync sed whiptail > /dev/null 2>&1 || fatal "Failed to install dependencies from apt."
-    apt-get -y upgrade python* > /dev/null 2>&1 || fatal "Failed to upgrade python related dependencies from apt."
     info "Removing unused packages."
     apt-get -y autoremove > /dev/null 2>&1 || fatal "Failed to remove unused packages from apt."
     info "Cleaning up package cache."

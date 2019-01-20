@@ -23,7 +23,6 @@ run_yum() {
     fi
     info "Installing dependencies."
     yum -y install curl git grep newt python-pip rsync sed > /dev/null 2>&1 || fatal "Failed to install dependencies from yum."
-    yum -y upgrade python* > /dev/null 2>&1 || fatal "Failed to upgrade python related dependencies from yum."
     info "Removing unused packages."
     yum -y autoremove > /dev/null 2>&1 || fatal "Failed to remove unused packages from yum."
     info "Cleaning up package cache."
