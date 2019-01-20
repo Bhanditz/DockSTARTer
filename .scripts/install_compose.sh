@@ -12,7 +12,7 @@ install_compose() {
     FORCE=${1:-}
     if [[ ${AVAILABLE_COMPOSE} != "${INSTALLED_COMPOSE}" ]] || [[ -n ${FORCE} ]]; then
         info "Installing latest docker-compose."
-#
+
         # add if statements (if these exist)
         rm /usr/local/bin/docker-compose > /dev/null 2>&1 || fatal "Failed to remove /usr/local/bin/docker-compose binary."
         rm /usr/bin/docker-compose > /dev/null 2>&1 || fatal "Failed to remove /usr/bin/docker-compose binary."
@@ -22,7 +22,7 @@ install_compose() {
         pip uninstall docker-py > /dev/null 2>&1 || true
         pip install -U setuptools > /dev/null 2>&1 || fatal "Failed to install latest dependencies from pip."
         pip install -U docker-compose > /dev/null 2>&1 || fatal "Failed to install docker-compose from pip."
-#
+
         local UPDATED_COMPOSE
         UPDATED_COMPOSE=$( (docker-compose --version 2> /dev/null || true) | sed -E 's/.* version ([^,]*)(, build .*)?/\1/')
         if [[ ${AVAILABLE_COMPOSE} != "${UPDATED_COMPOSE}" ]]; then
